@@ -27,22 +27,51 @@ window.addEventListener("load", () => {
 });
 
 function startScanning(deviceId) {
-  codeReader
-    .decodeFromVideoDevice(deviceId, "scanner", (result, err) => {
-      if (result) {
-        console.log(result.text);
-        // barcodeResultElement.textContent = "Barcode Detected"; // Display a success message
-        barcodeResultElement.textContent = "Barcode Detected: " + result.text;
-        sendBarcodeData(result.text); // Call your function with the scanned barcode
-        stopScanning(); // Stop the scanning and hide the video element
-      } else if (err && !(err instanceof ZXing.NotFoundException)) {
-        console.error(err);
-      }
-    })
-    .then((stream) => {
-      videoStream = stream; // Keep track of the stream to stop it later
-    });
+  navigator.mediaDevices.getUserMedia({ video: true })
+  .then(function(stream) {
+      // Success: The user allowed camera access
+      videoElement.srcObject = stream;
+      videoElement.play(); // Ensure the video plays
+      codeReader
+          .decodeFromVideoDevice(deviceId, "scanner", (result, err) => {
+              if (result) {
+                  console.log(result.text);
+                  barcodeResultElement.textContent = "Barcode Detected: " + result.text;
+                  sendBarcodeData(result.text);
+                  stopScanning();
+              } else if (err && !(err instanceof ZXing.NotFoundException)) {
+                  console.error(err);
+              }
+          })
+          .then(stream => {
+              videoStream = stream; // Keep track of the stream to stop it later
+          });
+  })
+  .catch(function(error) {
+      // Error: The user denied camera access or another error occurred
+      console.log("Camera access was denied or an error occurred:", error);
+      barcodeResultElement.textContent = "Access to camera was denied or an error occurred.";
+  });
 }
+
+
+// function startScanning(deviceId) {
+//   codeReader
+//     .decodeFromVideoDevice(deviceId, "scanner", (result, err) => {
+//       if (result) {
+//         console.log(result.text);
+//         // barcodeResultElement.textContent = "Barcode Detected"; // Display a success message
+//         barcodeResultElement.textContent = "Barcode Detected: " + result.text;
+//         sendBarcodeData(result.text); // Call your function with the scanned barcode
+//         stopScanning(); // Stop the scanning and hide the video element
+//       } else if (err && !(err instanceof ZXing.NotFoundException)) {
+//         console.error(err);
+//       }
+//     })
+//     .then((stream) => {
+//       videoStream = stream; // Keep track of the stream to stop it later
+//     });
+// }
 
 function stopScanning() {
   if (videoStream) {
