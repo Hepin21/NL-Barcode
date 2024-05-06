@@ -10,7 +10,10 @@ window.addEventListener("load", () => {
     .listVideoInputDevices()
     .then((videoInputDevices) => {
       if (videoInputDevices.length > 0) {
-        selectedDeviceId = videoInputDevices[0].deviceId;
+        // Attempt to find the back camera
+        const backCamera = videoInputDevices.find(device => device.label.toLowerCase().includes('back'));
+        selectedDeviceId = backCamera ? backCamera.deviceId : videoInputDevices[0].deviceId;
+        
         startScanning(selectedDeviceId);
       } else {
         console.error("No video devices found.");
