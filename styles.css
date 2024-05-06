@@ -1,0 +1,72 @@
+body {
+        height: 100%; /* Full height of the viewport */
+        margin: 0; /* Reset default margin */
+        padding: 0; /* Reset default padding */
+        overflow: hidden; /* Hide overflow */
+        font-family: Arial, sans-serif;
+        background: linear-gradient(
+          135deg,
+          #0b2347,
+          #4b2f43
+        ); /* Gradient background maintained on body */
+      }
+      
+      .full-screen-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh; /* full view height */
+      }
+      
+      .container {
+        text-align: center;
+        width: 85%;
+        max-width: 600px;
+        padding: 15px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        background: #3d325b;
+        border-radius: 10px;
+      }
+      
+      .scanner-container {
+        margin-top: 20px;
+      }
+      
+      .title {
+        /* margin-bottom: 20px; */
+        color: #fff;
+      }
+      
+      video {
+        width: 100%;
+        border-radius: 8px;
+      }
+      
+      #barcode-result {
+        color: #fff;
+        background: linear-gradient(135deg, #120e0f, #372331);
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 8px;
+        text-align: center;
+      }
+      
+      b {
+        color: #c1b8d0;
+      }
+      
+      button {
+        padding: 10px 25px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        background: linear-gradient(
+          135deg,
+          #0b2347,
+          #4b2f43
+        );
+        font-weight: bolder;
+      }
+      

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Barcode Scanner</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/primeflex@3.3.1/primeflex.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/x-icon" href="Barcode Scanner.ico" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#4b2f43" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+  </head>
+  <body>
+    <div class="full-screen-wrapper">
+      <div class="container">
+        <div>
+          <img
+            id="library-logo"
+            class="w-5rem"
+            src="barcode-scanner-for-libraby-books.png"
+            alt="Library Logo"
+          />
+        </div>
+        <h1 class="title">Barcode Scanner</h1>
+        <div class="scanner-container">
+          <video id="scanner" playsinline></video>
+          <p id="barcode-result">Waiting for barcode...</p>
+          <div
+            id="result-card"
+            class="card text-left"
+            style="display: none"
+          ></div>
+        </div>
+      </div>
+    </div>
+    <script src="https://unpkg.com/@zxing/library@latest"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

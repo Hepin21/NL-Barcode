@@ -1,0 +1,22 @@
+{
+        "short_name": "Scanner",
+        "name": "Library Barcode Scanner",
+        "icons": [
+          {
+            "src": "icons/icon-192x192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+          },
+          {
+            "src": "icons/icon-512x512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+          }
+        ],
+        "start_url": "/index.html",
+        "background_color": "#3d325b",
+        "display": "standalone",
+        "scope": "/",
+        "theme_color": "#3d325b"
+      }
+      
